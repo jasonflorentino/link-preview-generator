@@ -44,6 +44,14 @@ const getImg = async (page, uri) => {
     ) {
       return twitterImg.content;
     }
+    const amazonImg = document.querySelector('img[id="landingImage"]');
+    if (
+      amazonImg != null &&
+      amazonImg.src.length > 0 &&
+      (await urlImageIsAccessible(amazonImg.src))
+    ) {
+      return amazonImg.src;
+    }
 
     let imgs = Array.from(document.getElementsByTagName("img"));
     if (imgs.length > 0) {
